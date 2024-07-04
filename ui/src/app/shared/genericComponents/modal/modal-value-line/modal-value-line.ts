@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, Input } from "@angular/core";
 import { ChannelAddress, CurrentData } from "src/app/shared/shared";
 
@@ -10,11 +9,11 @@ import { AbstractModalLine } from "../abstract-modal-line";
 })
 export class ModalValueLineComponent extends AbstractModalLine {
 
-  @Input() set channelsToSubscribe(channels: ChannelAddress[]) {
+  @Input({ required: true }) set channelsToSubscribe(channels: ChannelAddress[]) {
     this.channels = channels;
   }
 
-  private channels: ChannelAddress[];
+  private channels!: ChannelAddress[];
 
   protected override getChannelAddresses(): ChannelAddress[] {
     return this.channels;

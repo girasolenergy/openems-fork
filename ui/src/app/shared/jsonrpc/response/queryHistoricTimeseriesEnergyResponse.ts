@@ -13,7 +13,7 @@ export interface Cumulated {
  *   "id": UUID,
  *   "result": {
  *     "data": Cumulated
- *     }
+ *   }
  * }
  * </pre>
  */

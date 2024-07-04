@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
 
@@ -13,7 +12,7 @@ export abstract class DataService {
   protected timestamps: string[] = [];
 
   /** Used to retrieve values */
-  public currentValue: BehaviorSubject<{ allComponents: {} }> = new BehaviorSubject({ allComponents: {} });
+  public currentValue: BehaviorSubject<{ allComponents: {[key: string]: any} }> = new BehaviorSubject({ allComponents: {} });
 
   /**
    * Gets the values from passed channelAddresses
@@ -22,14 +21,14 @@ export abstract class DataService {
    * @param edge the edge
    * @param componentId the componentId
    */
-  public abstract getValues(channelAddress: ChannelAddress[], edge: Edge, componentId?: string);
+  public abstract getValues(channelAddress: ChannelAddress[], edge: Edge, componentId?: string): void;
 
   /**
    * Unsubscribes from passed channels
    *
    * @param channels the channels
    */
-  public abstract unsubscribeFromChannels(channels: ChannelAddress[]);
+  public abstract unsubscribeFromChannels(channels: ChannelAddress[]): void;
 
-  public abstract refresh(ev: RefresherCustomEvent);
+  public abstract refresh(ev: RefresherCustomEvent): void;
 }

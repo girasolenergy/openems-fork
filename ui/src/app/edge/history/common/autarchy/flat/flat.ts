@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component } from '@angular/core';
 import { AbstractFlatWidget } from 'src/app/shared/genericComponents/flat/abstract-flat-widget';
 import { ChannelAddress, CurrentData, Utils } from '../../../../../shared/shared';
@@ -9,7 +8,7 @@ import { ChannelAddress, CurrentData, Utils } from '../../../../../shared/shared
 })
 export class FlatComponent extends AbstractFlatWidget {
 
-    protected autarchyValue: number | null;
+    protected autarchyValue: number | null = null;
 
     protected override onCurrentData(currentData: CurrentData) {
         this.autarchyValue =

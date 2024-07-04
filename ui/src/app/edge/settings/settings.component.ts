@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments';
@@ -12,7 +11,7 @@ import { canSeeJsonrpcTest } from './jsonrpctest/permission';
 })
 export class SettingsComponent implements OnInit {
 
-  public edge: Edge = null;
+  public edge: Edge | null = null;
   public environment = environment;
 
   public canSeeAppCenter: boolean | undefined;

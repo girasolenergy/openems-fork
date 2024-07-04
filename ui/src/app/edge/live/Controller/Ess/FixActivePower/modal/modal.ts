@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AbstractModal } from 'src/app/shared/genericComponents/modal/abstractModal';
@@ -9,7 +8,7 @@ import { ChannelAddress, CurrentData, Utils } from 'src/app/shared/shared';
 })
 export class ModalComponent extends AbstractModal {
 
-  public chargeDischargePower: { name: string, value: number };
+  public chargeDischargePower: { name: string, value: number } | null = null;
 
   public readonly CONVERT_TO_WATT = Utils.CONVERT_TO_WATT;
   public readonly CONVERT_MANUAL_ON_OFF = Utils.CONVERT_MANUAL_ON_OFF(this.translate);

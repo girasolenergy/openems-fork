@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Directive } from '@angular/core';
 import { Router } from '@angular/router';
 import { SubscribeEdgesRequest } from '../jsonrpc/request/subscribeEdgesRequest';
@@ -22,7 +21,7 @@ export class Pagination {
         this.edge = edge;
         this.service.websocket.sendRequest(new SubscribeEdgesRequest({ edges: [edge.id] }));
       }).then(() => {
-        this.edge.subscribeChannels(this.service.websocket, '', [
+        this.edge!.subscribeChannels(this.service.websocket, '', [
           new ChannelAddress('_sum', 'State'),
         ]);
       })

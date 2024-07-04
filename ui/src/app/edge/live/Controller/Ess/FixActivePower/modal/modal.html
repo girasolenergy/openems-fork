@@ -4,7 +4,7 @@
     [converter]="CONVERT_MANUAL_ON_OFF">
   </oe-modal-line>
 
-  <ng-container *ngIf="formGroup.value.mode === 'MANUAL_ON'">
+  <ng-container *ngIf="formGroup.value.mode === 'MANUAL_ON' && chargeDischargePower !== null">
     <oe-modal-line [name]="chargeDischargePower.name" [value]="chargeDischargePower.value"
       [converter]="CONVERT_TO_WATT">
     </oe-modal-line>

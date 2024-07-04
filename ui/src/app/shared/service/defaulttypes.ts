@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { TranslateService } from '@ngx-translate/core';
 import { endOfMonth, endOfYear, format, getDay, getMonth, getYear, isSameDay, isSameMonth, isSameYear, startOfMonth, startOfYear, subDays } from 'date-fns';
 
@@ -210,6 +209,7 @@ export module DefaultTypes {
         case 4: return translate.instant('General.Week.thursday');
         case 5: return translate.instant('General.Week.friday');
         case 6: return translate.instant('General.Week.saturday');
+        default: throw new Error('Invalid day of week');
       }
     }
 
@@ -233,6 +233,7 @@ export module DefaultTypes {
         case 10: return translate.instant('General.Month.october');
         case 11: return translate.instant('General.Month.november');
         case 12: return translate.instant('General.Month.december');
+        default: throw new Error('Invalid month');
       }
     }
   }

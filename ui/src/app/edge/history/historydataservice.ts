@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Inject, Injectable } from "@angular/core";
 
 import { DataService } from "../../shared/genericComponents/shared/dataservice";
@@ -36,15 +35,15 @@ export class HistoryDataService extends DataService {
         if (Object.entries(this.channelAddresses).length > 0) {
 
           this.service.historyPeriod.subscribe(date => {
-            edge.sendRequest(this.websocket, new QueryHistoricTimeseriesEnergyRequest(DateUtils.maxDate(date.from, edge?.firstSetupProtocol), date.to, Object.values(this.channelAddresses)))
+            edge.sendRequest(this.websocket, new QueryHistoricTimeseriesEnergyRequest(DateUtils.maxDate(date.from, edge?.firstSetupProtocol)!, date.to, Object.values(this.channelAddresses)))
               .then((response) => {
-                const allComponents = {};
+                const allComponents: {[key: string]: any} = {};
                 const result = (response as QueryHistoricTimeseriesEnergyResponse).result;
                 for (const [key, value] of Object.entries(result.data)) {
                   allComponents[key] = value;
                 }
                 this.currentValue.next({ allComponents: allComponents });
-                this.timestamps = response.result['timestamps'] ?? [];
+                this.timestamps = [];
               }).catch(err => console.warn(err))
               .finally(() => {
               });
@@ -59,7 +58,9 @@ export class HistoryDataService extends DataService {
   }
 
   public override refresh(ev: RefresherCustomEvent) {
-    this.getValues(Object.values(this.channelAddresses), this.edge, "");
+    if (this.edge !== null) {
+      this.getValues(Object.values(this.channelAddresses), this.edge, "");
+    }
     ev.target.complete();
   }
 }

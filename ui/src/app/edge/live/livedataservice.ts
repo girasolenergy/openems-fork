@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Directive, Inject, OnDestroy } from "@angular/core";
 import { takeUntil } from "rxjs/operators";
 import { v4 as uuidv4 } from 'uuid';
@@ -45,20 +44,28 @@ export class LiveDataService extends DataService implements OnDestroy {
     }
 
     ngOnDestroy() {
-        this.edge.unsubscribeFromChannels(this.websocket, this.subscribedChannelAddresses);
+        if (this.edge !== null) {
+            this.edge.unsubscribeFromChannels(this.websocket, this.subscribedChannelAddresses);
+        }
         this.stopOnDestroy.next();
         this.stopOnDestroy.complete();
     }
 
     public unsubscribeFromChannels(channels: ChannelAddress[]) {
-        this.edge.unsubscribeFromChannels(this.websocket, channels);
+        if (this.edge !== null) {
+            this.edge.unsubscribeFromChannels(this.websocket, channels);
+        }
     }
 
     public override refresh(ev: RefresherCustomEvent) {
         this.currentValue.next({ allComponents: {} });
-        this.edge.unsubscribeFromChannels(this.websocket, this.subscribedChannelAddresses);
+        if (this.edge !== null) {
+            this.edge.unsubscribeFromChannels(this.websocket, this.subscribedChannelAddresses);
+        }
         setTimeout(() => {
-            this.edge.subscribeChannels(this.websocket, "", this.subscribedChannelAddresses);
+            if (this.edge !== null) {
+                this.edge.subscribeChannels(this.websocket, "", this.subscribedChannelAddresses);
+            }
             ev.target.complete();
         }, 1000);
     }

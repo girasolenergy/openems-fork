@@ -5,7 +5,7 @@ import { WebsocketInterface } from "../websocketInterface";
 
 export class DummyWebsocket implements WebsocketInterface {
 
-    public login(request: AuthenticateWithPasswordRequest | AuthenticateWithTokenRequest) {
+    public login(request: AuthenticateWithPasswordRequest | AuthenticateWithTokenRequest): Promise<void> {
         throw new Error("Method not implemented.");
     }
 
