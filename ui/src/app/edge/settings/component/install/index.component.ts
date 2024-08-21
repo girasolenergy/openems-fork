@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { CategorizedFactories } from 'src/app/shared/components/edge/edgeconfig';
 import { Component, OnInit } from '@angular/core';
 import { Service, Utils, EdgeConfig, Websocket, Edge, EdgePermission } from '../../../../shared/shared';
@@ -18,10 +17,10 @@ export class IndexComponent implements OnInit {
 
   private static readonly SELECTOR = "indexComponentInstall";
 
-  public list: MyCategorizedFactories[];
+  public list: MyCategorizedFactories[] | null = null;
   public showAllFactories = false;
 
-  private edge: Edge;
+  private edge: Edge | null ;
 
   constructor(
     private service: Service,

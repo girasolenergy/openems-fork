@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Edge, EdgeConfig, Service, Utils } from '../../../../shared/shared';
@@ -14,7 +13,7 @@ export class FixDigitalOutputChartOverviewComponent implements OnInit {
     public edge: Edge | null = null;
     public component: EdgeConfig.Component | null = null;
 
-    public showTotal: boolean = false;
+    public showTotal: boolean | null = false;
     public fixDigitalOutputComponents: string[] = [];
 
     // reference to the Utils method to access via html

@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Edge } from '../components/edge/edge';
 import { EdgeConfig } from '../components/edge/edgeconfig';
 

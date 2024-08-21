@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { InstallAppComponent } from './install.component';

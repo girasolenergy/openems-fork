@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Language } from "./language";
 
 describe('Language', () => {

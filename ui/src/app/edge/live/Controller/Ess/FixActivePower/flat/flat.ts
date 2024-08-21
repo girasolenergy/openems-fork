@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component } from '@angular/core';
 import { AbstractFlatWidget } from 'src/app/shared/components/flat/abstract-flat-widget';
 import { DefaultTypes } from 'src/app/shared/service/defaulttypes';

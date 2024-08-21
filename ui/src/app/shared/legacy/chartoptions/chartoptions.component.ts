@@ -3,7 +3,6 @@ import { PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
 import { Service } from '../../shared';
-// @ts-strict-ignore
 import { ChartOptionsPopoverComponent } from './popover/popover.component';
 
 @Component({

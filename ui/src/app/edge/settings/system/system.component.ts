@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments';
@@ -17,7 +16,7 @@ export class SystemComponent implements OnInit {
   public showLog: boolean = false;
   public readonly ESTIMATED_REBOOT_TIME = 600; // Seconds till the openems service is restarted after update
 
-  public edge: Edge;
+  public edge: Edge | null = null
   public restartTime: number = this.ESTIMATED_REBOOT_TIME;
 
   protected canSeeSystemRestart: boolean = false;

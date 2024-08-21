@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { JsonrpcNotification, JsonrpcRequest, JsonrpcResponseSuccess } from '../jsonrpc/base';
 import { AuthenticateWithPasswordRequest } from '../jsonrpc/request/authenticateWithPasswordRequest';
 import { AuthenticateWithTokenRequest } from '../jsonrpc/request/authenticateWithTokenRequest';

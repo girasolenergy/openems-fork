@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { GridMode } from "../../shared";
 
 export type Filter = (value: number | string | null) => boolean;

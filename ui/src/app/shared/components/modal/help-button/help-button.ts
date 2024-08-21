@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, Input } from "@angular/core";
 import { Service } from "src/app/shared/shared";
 import { environment } from 'src/environments';

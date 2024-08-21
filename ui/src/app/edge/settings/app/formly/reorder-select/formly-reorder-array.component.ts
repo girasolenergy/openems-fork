@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, OnInit } from "@angular/core";
 import { ItemReorderEventDetail } from "@ionic/angular";
 import { FieldType, FieldTypeConfig, FormlyFieldConfig, FormlyFieldProps } from "@ngx-formly/core";
@@ -13,7 +12,7 @@ export class FormlyReorderArrayComponent extends FieldType<FieldTypeConfig<Forml
 }>> implements OnInit {
 
     protected selectedItems: SelectOption[] = [];
-    protected availableItems: SelectOption[];
+    protected availableItems: SelectOption[] | null = null;
 
     protected itemToAdd: SelectOption | null = null;
 

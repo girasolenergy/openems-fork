@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { ChannelAddress } from "../../../shared/type/channeladdress";
 import { JsonrpcRequest } from "../base";
 import { JsonRpcUtils } from "../jsonrpcutils";
@@ -33,8 +32,5 @@ export class SubscribeChannelsRequest extends JsonrpcRequest {
             count: SubscribeChannelsRequest.lastCount++,
             channels: JsonRpcUtils.channelsToStringArray(channels),
         });
-        // delete local fields, otherwise they are sent with the JSON-RPC Request
-        delete this.channels;
     }
-
 }

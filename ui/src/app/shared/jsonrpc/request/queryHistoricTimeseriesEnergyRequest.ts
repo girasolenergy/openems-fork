@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { ChannelAddress } from "../../type/channeladdress";
 import { format } from 'date-fns';
 import { JsonrpcRequest } from "../base";
@@ -36,11 +35,5 @@ export class QueryHistoricTimeseriesEnergyRequest extends JsonrpcRequest {
             toDate: format(toDate, 'yyyy-MM-dd'),
             channels: JsonRpcUtils.channelsToStringArray(channels),
         });
-        // delete local fields, otherwise they are sent with the JSON-RPC Request
-        delete this.fromDate;
-        delete this.toDate;
-        delete this.channels;
     }
-
 }
-

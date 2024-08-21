@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, OnInit } from "@angular/core";
 import { FieldType, FieldTypeConfig, FormlyFieldConfig } from "@ngx-formly/core";
 import { OptionGroup, OptionGroupConfig, Option, getTitleFromOptionConfig } from "./optionGroupPickerConfiguration";
@@ -12,7 +11,7 @@ export class FormlyOptionGroupPickerComponent extends FieldType<FieldTypeConfig>
     protected multi: boolean = false;
     protected selectedGroup: OptionGroup | null = null;
     protected selectedIndex: number = 0;
-    protected selectedValue: string | string[];
+    protected selectedValue: string | string[] | null = null;
 
     protected optionGroups: OptionGroup[] = [];
 

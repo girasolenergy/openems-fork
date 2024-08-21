@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { TestBed } from "@angular/core/testing";
 import { DummyConfig } from "src/app/shared/components/edge/edgeconfig.spec";
 import { Service, Utils } from "src/app/shared/shared";

@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ChannelAddress, Edge, EdgeConfig, Service, Utils, Websocket } from '../../../../shared/shared';
@@ -14,12 +13,12 @@ export class SinglethresholdChartOverviewComponent implements OnInit {
     public edge: Edge | null = null;
 
     public component: EdgeConfig.Component | null = null;
-    public inputChannel: string;
+    public inputChannel: string | null = null;
 
     // reference to the Utils method to access via html
     public isLastElement = Utils.isLastElement;
 
-    protected inputChannelUnit: string;
+    protected inputChannelUnit: string | null = null;
     protected readonly spinnerid = SinglethresholdChartOverviewComponent.SELECTOR;
 
 

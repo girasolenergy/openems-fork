@@ -1,5 +1,3 @@
-// @ts-strict-ignore
-
 import { TranslateService } from "@ngx-translate/core";
 
 import { CurrentData, EdgeConfig, GridMode, Utils } from "../../shared";
@@ -207,13 +205,13 @@ export namespace Converter {
   };
 
   export const ON_OFF = (translate: TranslateService) => {
-    return (raw): string => {
+    return (raw: number): string => {
       return translate.instant(raw == 1 ? 'General.on' : 'General.off');
     };
   };
 
   export const FORMAT_SECONDS_TO_DURATION: any = (locale: string) => {
-    return (raw): any => {
+    return (raw: number): string=> {
       return IF_NUMBER(raw, value => {
         return TimeUtils.formatSecondsToDuration(value, locale);
       });

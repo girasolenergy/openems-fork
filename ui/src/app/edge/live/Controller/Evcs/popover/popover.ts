@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component } from '@angular/core';
 import { AbstractModal } from 'src/app/shared/components/modal/abstractModal';
 

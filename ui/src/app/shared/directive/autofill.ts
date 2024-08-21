@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Directive, ElementRef, OnInit } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { Logger } from '../shared';

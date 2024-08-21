@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, OnInit } from '@angular/core';
 import { CategorizedComponents } from 'src/app/shared/components/edge/edgeconfig';
 import { EdgeConfig, Service, Utils } from '../../../../shared/shared';
@@ -17,7 +16,7 @@ export class IndexComponent implements OnInit {
   private static readonly SELECTOR = "indexComponentUpdate";
 
   public config: EdgeConfig | null = null;
-  public list: MyCategorizedComponents[];
+  public list: MyCategorizedComponents[] | null = null;
 
   public showAllEntries = false;
 

@@ -98,7 +98,7 @@ export class Language {
      * @param language the language
      * @returns the i18n locale
      */
-    public static geti18nLocaleByKey(language: string) {
+    public static geti18nLocaleByKey(language: string | null | undefined) {
         const lang = this.getByBrowserLang(language?.toLowerCase());
 
         if (!lang) {

@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { TranslateService } from '@ngx-translate/core';
 import { endOfMonth, endOfYear, format, getDay, getMonth, getYear, isSameDay, isSameMonth, isSameYear, startOfMonth, startOfYear, subDays } from 'date-fns';
 

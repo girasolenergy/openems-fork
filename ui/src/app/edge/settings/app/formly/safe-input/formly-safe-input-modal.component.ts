@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
 import { ModalController } from "@ionic/angular";
@@ -18,7 +17,7 @@ export class FormlySafeInputModalComponent implements OnInit {
     protected model!: {};
 
     protected form: FormGroup = new FormGroup({});
-    protected myModel: {};
+    protected myModel: {} | null = null;
 
     constructor(
         protected modalCtrl: ModalController,
