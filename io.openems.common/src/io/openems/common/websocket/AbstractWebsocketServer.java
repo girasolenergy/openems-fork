@@ -32,8 +32,9 @@ public abstract class AbstractWebsocketServer<T extends WsData> extends Abstract
 	 */
 	private final ThreadPoolExecutor executor;
 
-	private final Logger log = LoggerFactory.getLogger(AbstractWebsocketServer.class);
-	private final int port;
+       private final Logger log = LoggerFactory.getLogger(AbstractWebsocketServer.class);
+       private final String ip;
+       private final int port;
 	private final WebSocketServer ws;
 	private final Collection<WebSocket> connections = ConcurrentHashMap.newKeySet();
 
@@ -46,13 +47,14 @@ public abstract class AbstractWebsocketServer<T extends WsData> extends Abstract
 	 * @param port     to listen on
 	 * @param poolSize number of threads dedicated to handle the tasks
 	 */
-	protected AbstractWebsocketServer(String name, int port, int poolSize) {
-		super(name);
-		this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(poolSize,
-				new ThreadFactoryBuilder().setNameFormat(name + "-%d").build());
+       protected AbstractWebsocketServer(String name, String ip, int port, int poolSize) {
+               super(name);
+               this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(poolSize,
+                               new ThreadFactoryBuilder().setNameFormat(name + "-%d").build());
 
-		this.port = port;
-		this.ws = new WebSocketServer(new InetSocketAddress(port),
+               this.ip = ip;
+               this.port = port;
+               this.ws = new WebSocketServer(new InetSocketAddress(ip, port),
 				/* AVAILABLE_PROCESSORS */ Runtime.getRuntime().availableProcessors(), //
 				/* drafts, no filter */ List.of(new MyDraft6455()), //
 				this.connections) {
@@ -235,8 +237,8 @@ public abstract class AbstractWebsocketServer<T extends WsData> extends Abstract
 		this.isStarted = true;
 		super.start();
 		this.logInfo(this.log, "Starting websocket server [port=" + this.port + "]");
-		this.ws.start();
-	}
+               this.ws.start();
+       }
 
 	/**
 	 * Execute a {@link Runnable} using the shared {@link ExecutorService}.

@@ -17,6 +17,9 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 	@AttributeDefinition(name = "Is enabled?", description = "Is this Component enabled?")
 	boolean enabled() default true;
 
+	@AttributeDefinition(name = "IP-Address", description = "The IP address of the websocket server. (0.0.0.0 for any IP)")
+	String ip() default "127.0.0.1";
+
 	@AttributeDefinition(name = "Port", description = "Port on which the Websocket server should listen.")
 	int port() default 8085;
 

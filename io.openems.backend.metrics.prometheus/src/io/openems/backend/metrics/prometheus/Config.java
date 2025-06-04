@@ -8,6 +8,9 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 		description = "Metrics endpoint for prometheus.")
 @interface Config {
 
+	@AttributeDefinition(name = "IP-Address", description = "The IP address to bind the metrics server. (0.0.0.0 for any IP)")
+	String ip() default "127.0.0.1";
+
 	@AttributeDefinition(name = "Port", description = "Http port")
 	int port() default 9400;
 

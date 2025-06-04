@@ -1,6 +1,7 @@
 package io.openems.backend.b2brest;
 
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.ServerConnector;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
@@ -43,7 +44,7 @@ public class Backend2BackendRest extends AbstractOpenemsBackendComponent {
 
 	@Activate
 	private void activate(Config config) throws OpenemsException {
-		this.startServer(config.port());
+		this.startServer(config.ip(), config.port());
 	}
 
 	@Deactivate
@@ -57,9 +58,13 @@ public class Backend2BackendRest extends AbstractOpenemsBackendComponent {
 	 * @param port the port
 	 * @throws OpenemsException on error
 	 */
-	private synchronized void startServer(int port) throws OpenemsException {
+	private synchronized void startServer(String ip, int port) throws OpenemsException {
 		try {
-			this.server = new Server(port);
+			this.server = new Server();
+			final var connector = new ServerConnector(this.server);
+			connector.setHost(ip);
+			connector.setPort(port);
+			this.server.addConnector(connector);
 			this.server.setHandler(new RestHandler(this));
 			this.server.start();
 			this.logInfo(this.log, "Backend2Backend.Rest started on port [" + port + "].");

@@ -92,7 +92,7 @@ public class ControllerApiWebsocketImpl extends AbstractOpenemsComponent
 			call.put(ComponentConfigRequestHandler.API_WORKER_KEY, this.apiWorker);
 		});
 		this.onRequest.setDebug(config.debugMode());
-		this.startServer(config.port(), POOL_SIZE);
+               this.startServer(config.ip(), config.port(), POOL_SIZE);
 
 	}
 
@@ -111,10 +111,10 @@ public class ControllerApiWebsocketImpl extends AbstractOpenemsComponent
 	 * @param port     the port
 	 * @param poolSize number of threads dedicated to handle the tasks
 	 */
-	private synchronized void startServer(int port, int poolSize) {
-		this.server = new WebsocketServer(this, "Websocket Api", port, poolSize);
-		this.server.start();
-	}
+       private synchronized void startServer(String ip, int port, int poolSize) {
+               this.server = new WebsocketServer(this, "Websocket Api", ip, port, poolSize);
+               this.server.start();
+       }
 
 	/**
 	 * Stop existing websocket server.

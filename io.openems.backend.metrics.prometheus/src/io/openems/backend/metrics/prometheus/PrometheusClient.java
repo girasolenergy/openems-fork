@@ -58,7 +58,7 @@ public class PrometheusClient extends AbstractOpenemsBackendComponent implements
 		this.prometheusRegistry.register(PrometheusMetrics.ALERTING_MESSAGES_QUEUE);
 		this.prometheusRegistry.register(PrometheusMetrics.ALERTING_MESSAGES_SENT);
 
-		this.startServer(config.port(), config.bearerToken());
+               this.startServer(config.ip(), config.port(), config.bearerToken());
 	}
 
 	@Deactivate
@@ -69,10 +69,11 @@ public class PrometheusClient extends AbstractOpenemsBackendComponent implements
 		this.prometheusRegistry.clear();
 	}
 
-	private void startServer(int port, String bearerToken) {
+	private void startServer(String ip, int port, String bearerToken) {
 		try {
-			final var httpServerBuilder = HTTPServer.builder() //
-					.port(port) //
+                       final var httpServerBuilder = HTTPServer.builder() //
+                                       .host(ip) //
+                                       .port(port) //
 					.registry(this.prometheusRegistry);
 			if (bearerToken != null && !bearerToken.isBlank()) {
 				httpServerBuilder.authenticator(new Authenticator() {
@@ -86,8 +87,8 @@ public class PrometheusClient extends AbstractOpenemsBackendComponent implements
 					}
 				});
 			}
-			this.server = httpServerBuilder.buildAndStart();
-			this.log.info("Started /metrics endpoint on port %s".formatted(this.server.getPort()));
+	this.server = httpServerBuilder.buildAndStart();
+	this.log.info("Started /metrics endpoint on port %s".formatted(this.server.getPort()));
 		} catch (IOException e) {
 			this.log.error(e.getMessage());
 		}

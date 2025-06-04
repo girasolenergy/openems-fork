@@ -58,8 +58,8 @@ public abstract class AbstractRestApi extends AbstractOpenemsComponent
 	 *                           assigned
 	 * @param connectionlimit    the connection limit
 	 */
-	protected void activate(ComponentContext context, String id, String alias, boolean enabled,
-			boolean isDebugModeEnabled, int apiTimeout, int port, int connectionlimit) {
+       protected void activate(ComponentContext context, String id, String alias, boolean enabled,
+                       boolean isDebugModeEnabled, int apiTimeout, String ip, int port, int connectionlimit) {
 		super.activate(context, id, alias, enabled);
 		this.isDebugModeEnabled = isDebugModeEnabled;
 
@@ -77,8 +77,9 @@ public abstract class AbstractRestApi extends AbstractOpenemsComponent
 			httpConfig.setUriCompliance(UriCompliance.from(Set.of(//
 					UriCompliance.Violation.SUSPICIOUS_PATH_CHARACTERS, //
 					UriCompliance.Violation.ILLEGAL_PATH_CHARACTERS)));
-			final var connector = new ServerConnector(this.server, new HttpConnectionFactory(httpConfig));
-			connector.setPort(port);
+                       final var connector = new ServerConnector(this.server, new HttpConnectionFactory(httpConfig));
+                       connector.setHost(ip);
+                       connector.setPort(port);
 			this.server.addConnector(connector);
 			this.server.setHandler(new RestHandler(this));
 			this.server.addBean(new AcceptRateLimit(10, 5, TimeUnit.SECONDS, this.server));

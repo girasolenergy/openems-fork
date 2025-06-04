@@ -21,6 +21,8 @@ import io.openems.edge.controller.api.rest.AbstractRestApi;
 
 	@AttributeDefinition(name = "Port", description = "Port on which the webserver should listen.")
 	int port() default 8084;
+	@AttributeDefinition(name = "IP-Address", description = "The IP address on which the webserver should listen. (0.0.0.0 for any IP)")
+	String ip() default "127.0.0.1";
 
 	@AttributeDefinition(name = "Connection limit", description = "Maximum number of connections")
 	int connectionlimit() default 5;
