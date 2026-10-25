@@ -1,0 +1,16 @@
+Bundle-Name: OpenEMS PoC Jetty WebSocket
+Bundle-Vendor: PoC
+Bundle-License: https://opensource.org/licenses/EPL-2.0
+Bundle-Version: 1.0.0.${tstamp}
+
+-buildpath: \
+	${buildpath},\
+	io.openems.wrapper.Java-WebSocket,\
+	org.apache.felix.http.jetty12,\
+	org.eclipse.jetty.websocket.core.common;version='12.1.13',\
+	org.eclipse.jetty.websocket.core.server;version='12.1.13',\
+	org.eclipse.jetty.websocket.core.client;version='12.1.13',\
+	org.eclipse.jetty.client;version='12.1.13'
+
+-testpath: \
+	${testpath}
